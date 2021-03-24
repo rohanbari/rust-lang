@@ -9,10 +9,10 @@ fn main() {
     println!("=== Guess The Number Game ===");
 
     // Using Rng trait to generate unique random numbers
-    let secret_number = rand::thread_rng().gen_range(LOWER, UPPER);
+    let secret_number = rand::thread_rng().gen_range(LOWER..UPPER);
 
     loop {
-        println!("Please input your guess. ");
+        println!("Please input your guess.");
 
         // Accepting user input as a string
         let mut guess = String::new();
@@ -40,8 +40,8 @@ fn main() {
 
         // Comparing the  secret_number  with  guess  by using Ordering trait
         match guess.cmp(&secret_number) {
-            Ordering::Greater => println!("\tLesser than expected."),
-            Ordering::Less => println!("\tGreater than expected."),
+            Ordering::Greater => println!("\tGuessed too high..."),
+            Ordering::Less => println!("\tGuessed too low..."),
             Ordering::Equal => {
                 println!("\tCORRECT!");
                 break;
